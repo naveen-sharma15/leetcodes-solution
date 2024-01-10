@@ -10,28 +10,27 @@
  */
 class Solution {
 public:
+    void reverseNow(ListNode* left,ListNode* curr,ListNode* &head)
+    {
+        if(curr==NULL)
+        {
+          head=left;
+          return;
+        }
+        ListNode*right=curr->next;
+        curr->next=left;
+        left=curr;
+        curr=right;
+        reverseNow(left,curr,head);
+       
+    }
+
     ListNode* reverseList(ListNode* head) {
-        if(head==NULL)
-        {
-            return NULL;
-        }
-        if(head->next==NULL)
-        {
-            return head;
-        }
         ListNode*left=NULL;
         ListNode*curr=head;
-       
-        while(curr!=NULL)
-        {
-           ListNode*right=curr->next;
-           curr->next=left;
-           left=curr;
-           curr=right;
+        reverseNow(left,curr,head);
+        return head;
 
-        }
-        return left;
-        
-        
+
     }
 };
