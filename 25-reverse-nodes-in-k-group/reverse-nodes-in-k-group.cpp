@@ -22,31 +22,28 @@ public:
         return  len;
     }
     ListNode* reverseKGroup(ListNode* head, int k) {
-        if(head==NULL)
-        {
-            return head;
-        }
-        int len=findlen(head);
-        if(k>len)
-        {
-            return head;
-        }
-        ListNode* left=NULL;
-        ListNode* curr=head;
-        ListNode* right=head->next;
-        int count=0;
-        while(count<k)
-        {
-            right=curr->next;
-            curr->next=left;
-            left=curr;
-            curr=right;
-            count++;
-        }
-        if(right!=NULL)
-        {
-            head->next=reverseKGroup(right,k);
-        }
-        return left;
+       if(head==NULL){return head;}
+       int len=findlen(head);
+       if(k>len)
+       {
+           return head;
+       }
+        ListNode*left=NULL;
+         ListNode*curr=head;
+          ListNode*right=curr->next;
+          int count=0;
+          while(count<k)
+          {
+              right=curr->next;
+              curr->next=left;
+              left=curr;
+              curr=right;
+              count++;
+          }
+          if(right!=NULL)
+          {
+              head->next=reverseKGroup(right,k);
+          }
+          return left;
     }
 };
