@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool isValid(string s) {
-        stack<int>st;
+        stack<char>st;
         for(int i=0;i<s.length();i++)
         {
             char ch=s[i];
@@ -13,31 +13,31 @@ public:
             {
                 if(!st.empty())
                 {
-                   char topCh=st.top();
-                   if(ch==')' && topCh=='(')
-                   {
-                       st.pop();
-                   }
-                   else if(ch==']' && topCh=='[')
-                   {
-                       st.pop();
-                   }
-                    else if(ch=='}' && topCh=='{')
-                   {
-                       st.pop();
-                   }
-                   else{
-                       return false;
-                   }
+                    char topCh=st.top();
+                    if(ch==')'&& topCh=='(')
+                    {
+                        st.pop();
+                    }
+                    else if(ch=='}'&& topCh=='{')
+                    {
+                        st.pop();
+                    }
+                    else if(ch==']'&& topCh=='[')
+                    {
+                         st.pop();
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
-                return false;
+                    return false;
+                }
             }
         }
-     
-        }
-           if(st.empty())
+        if(st.empty())
         {
             return true;
         }
